@@ -63,6 +63,11 @@ flutter:
   assets:
     - assets/images/icons8-nubank-200.svg
     - assets/images/icons8-nubank-200.png
+    - assets/icon/nubank-person-icon.png
+    - assets/icon/nubank-hidden-eye-icon.png
+    - assets/icon/nubank-ask-icon.png
+    - assets/icon/nubank-message-plus-icon.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -76,15 +81,22 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
+  fonts:
+    - family: GraphikLight
+      fonts:
+        - asset: assets/fonts/GraphikLight.otf
+
+    - family: GraphikBlack
+      fonts:
+        - asset: assets/fonts/GraphikBlack.otf
+
+    - family: GraphikMedium
+      fonts:
+        - asset: assets/fonts/GraphikMedium.otf
+
+    - family: GraphikBold
+      fonts:
+        - asset: assets/fonts/GraphikBold.otf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
