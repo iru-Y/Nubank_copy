@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:nubank_copy/utils/app_route.dart';
 
-import '../utils/custom_syles.dart';
+import '../../../utils/custom_syles.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class LoginView extends StatelessWidget {
+  const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: CustomStyles.nubank,
+          backgroundColor: CustomStyles.NUBANK,
         body: Center(
           child: Column(
             children: [
@@ -38,7 +38,7 @@ class LoginPage extends StatelessWidget {
                   child: const Text(
                       'Usar a senha do celular',
                     style: TextStyle(
-                      color: CustomStyles.font
+                      color: CustomStyles.FONT
                     ),
                   ),
               ),

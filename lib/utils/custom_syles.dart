@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 abstract class CustomStyles {
-  static const Color nubank = Color.fromRGBO(157, 2, 217, 1);
-  static const Color nubank_ligth = Color.fromRGBO(156, 59, 220, 1);
-  static const Color font = Color.fromRGBO(1, 1, 1, 1);
-  static const Color white = Color.fromARGB(255, 255, 255, 255);
+  static const Color NUBANK = Color.fromRGBO(157, 2, 217, 1);
+  static const Color NUBANK_LIGTH = Color.fromRGBO(156, 59, 220, 1);
+  static const Color FONT = Color.fromRGBO(1, 1, 1, 1);
+  static const Color WHITE = Color.fromRGBO(255, 255, 255, 1);
+  static const Color BACKGROUND_BODY_ICON = Color.fromRGBO(240, 241, 245, 1);
 }
