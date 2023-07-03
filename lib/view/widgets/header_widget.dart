@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nubank_copy/services/on_tap__service.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
 import 'package:nubank_copy/viewmodel/icon_viewmodel.dart';
-import 'package:nubank_copy/viewmodel/on_tap_header_viewmodel.dart';
 
 class HeaderWidget extends StatelessWidget{
   const HeaderWidget({super.key});
@@ -9,8 +9,8 @@ class HeaderWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    final icon = IconViewModel().icons;
-    final gesture = OnTapHeaderViewModel().onTapHeaderService;
+    final icon = IconViewModel().headerIcons;
+    final gesture = OnTapService.onTapHeaderFunction;
 
     return Column(
       children: [

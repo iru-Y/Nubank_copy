@@ -68,6 +68,15 @@ flutter:
     - assets/icon/nubank-hidden-eye-icon.png
     - assets/icon/nubank-ask-icon.png
     - assets/icon/nubank-message-plus-icon.png
+    - assets/icon/nubank-pix-icon.png
+    - assets/icon/nubank-pay-icon.png
+    - assets/icon/nubank-transfer-icon.png
+    - assets/icon/nubank-deposity-icon.png
+    - assets/icon/nubank-recharge-icon.png
+    - assets/icon/nubank-bill-icon.png
+    - assets/icon/nubank-internacional-transfer.png
+    - assets/icon/nubank-my-cards-icon.png
+    
 
   #   - images/a_dot_ham.jpeg
 

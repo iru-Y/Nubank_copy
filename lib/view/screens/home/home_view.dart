@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nubank_copy/view/widgets/account_widget.dart';
 
 import '../../widgets/header_widget.dart';
 
@@ -14,6 +15,7 @@ class HomeView extends StatelessWidget {
           toolbarHeight: 150,
           title: const HeaderWidget()
       ),
+      body: const AccountWidget(),
     );
   }
 }

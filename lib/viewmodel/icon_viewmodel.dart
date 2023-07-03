@@ -3,6 +3,8 @@ import 'package:nubank_copy/services/icon_service.dart';
 
 class IconViewModel {
 
-  List<IconModel> icons = IconService().getIcons();
+  List<IconModel> headerIcons = IconService().getHeaderIcons();
 
+  List<IconModel> accountIcons = IconService().getAccountIcons();
+  
  }
