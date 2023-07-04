@@ -3,9 +3,15 @@ import 'package:nubank_copy/utils/app_route.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
 import 'package:nubank_copy/view/screens/home/home_view.dart';
 import 'package:nubank_copy/view/screens/login/login_view.dart';
+import 'package:nubank_copy/view/screens/user_profile/user_profile_view.dart';
+import 'package:nubank_copy/viewmodel/on_tap_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+    runApp(
+    ChangeNotifierProvider(create: (context)=> OneTapViewModel(),
+      child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -27,7 +33,8 @@ class MyApp extends StatelessWidget {
         ),
       routes: {
           AppRoute.HOME: (context) => const LoginView(),
-          AppRoute.INITIAL_PAGE: (context)=> const HomeView()
+          AppRoute.INITIAL_PAGE: (context)=> HomeView(),
+          AppRoute.USER_PROFILE: (context) => const UserProfileView()
       },
     );
   }

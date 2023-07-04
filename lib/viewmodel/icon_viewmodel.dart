@@ -6,5 +6,6 @@ class IconViewModel {
   List<IconModel> headerIcons = IconService().getHeaderIcons();
 
   List<IconModel> accountIcons = IconService().getAccountIcons();
-  
+
+
  }

@@ -1,9 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:nubank_copy/services/on_tap__service.dart';
+import 'package:nubank_copy/data/shared_on_tap_data.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
+import 'package:nubank_copy/viewmodel/icon_viewmodel.dart';
+import 'package:provider/provider.dart';
 
-import '../../viewmodel/icon_viewmodel.dart';
+import '../../../../viewmodel/on_tap_viewmodel.dart';
+
 
 class AccountWidget extends StatelessWidget {
   const AccountWidget({Key? key}) : super(key: key);
@@ -11,34 +14,32 @@ class AccountWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final icons = IconViewModel().accountIcons;
-    final onTap = OnTapService.onTapAccountFunction;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
           child:
           Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Conta',
                   style: TextStyle(fontSize: 20),
                 ),
-                SizedBox(height: 10),
-                Text(
-                  'R\$ 3.230,00',
-                  style: TextStyle(fontSize: 30),
-
-                ),
+                const SizedBox(height: 10),
+                Consumer<SharedOnTapData>(
+                  builder: (context, value, _) =>
+                  value. ? const Text('****') : const Text('3.2000,00')
+                )
               ]
           ),),
 
         Padding(
           padding: const EdgeInsets.only(left: 20),
           child: SizedBox(
-            height: 105,
+            height: 120,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: icons.length,
@@ -54,17 +55,17 @@ class AccountWidget extends StatelessWidget {
                             color: CustomStyles.BACKGROUND_BODY_ICON,
                           ),
                           child: IconButton(
-                              onPressed: onTap[index].onTap,
+                              onPressed: onTapServices.headerOnTap[0].onTap,
                               icon: Image.asset(icons[index].pathIcon, scale: 2.5, color: Colors.black)),
                         ),
-                        Text(icons[index].title)
+                        Expanded(child: Text(icons[index].title))
                       ],
                     )),
           ),
+
         ),
         GestureDetector(
           onTap: (){
-            print('certo');
           },
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -85,10 +86,10 @@ class AccountWidget extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset('assets/icon/nubank-my-cards-icon.png',
+                  Image.asset('assets/icons/nubank-my-cards-icon.png',
                     scale: 2.5,
                     color: Colors.black,),
-                  const SizedBox(width: 20,),
+                  const SizedBox(width: 20),
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 5),
                     child: Text('Meus Cartões'),
@@ -134,7 +135,6 @@ class AccountWidget extends StatelessWidget {
                                     ),
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = (){
-                                  print('object');
                                       }),
                                 const TextSpan(text: '2023 já está diponível')
                               ]
@@ -145,7 +145,8 @@ class AccountWidget extends StatelessWidget {
             ),
           )
 
-        )
+        ),
       ],
+
     );}
 }

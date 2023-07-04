@@ -64,18 +64,19 @@ flutter:
   assets:
     - assets/images/icons8-nubank-200.svg
     - assets/images/icons8-nubank-200.png
-    - assets/icon/nubank-person-icon.png
-    - assets/icon/nubank-hidden-eye-icon.png
-    - assets/icon/nubank-ask-icon.png
-    - assets/icon/nubank-message-plus-icon.png
-    - assets/icon/nubank-pix-icon.png
-    - assets/icon/nubank-pay-icon.png
-    - assets/icon/nubank-transfer-icon.png
-    - assets/icon/nubank-deposity-icon.png
-    - assets/icon/nubank-recharge-icon.png
-    - assets/icon/nubank-bill-icon.png
-    - assets/icon/nubank-internacional-transfer.png
-    - assets/icon/nubank-my-cards-icon.png
+    - assets/icons/nubank-person-icon.png
+    - assets/icons/nubank-hidden-eye-icon.png
+    - assets/icons/nubank-ask-icon.png
+    - assets/icons/nubank-message-plus-icon.png
+    - assets/icons/nubank-pix-icon.png
+    - assets/icons/nubank-pay-icon.png
+    - assets/icons/nubank-transfer-icon.png
+    - assets/icons/nubank-deposity-icon.png
+    - assets/icons/nubank-recharge-icon.png
+    - assets/icons/nubank-bill-icon.png
+    - assets/icons/nubank-internacional-transfer.png
+    - assets/icons/nubank-my-cards-icon.png
+    - assets/images/nubank-news-image.png
     
 
   #   - images/a_dot_ham.jpeg
