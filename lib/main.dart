@@ -29,11 +29,10 @@ class MyApp extends StatelessWidget {
           ),
           fontFamily: 'GraphikMedium',
 
-
         ),
       routes: {
           AppRoute.HOME: (context) => const LoginView(),
-          AppRoute.INITIAL_PAGE: (context)=> HomeView(),
+          AppRoute.INITIAL_PAGE: (context)=> const HomeView(),
           AppRoute.USER_PROFILE: (context) => const UserProfileView()
       },
     );

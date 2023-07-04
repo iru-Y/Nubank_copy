@@ -7,5 +7,4 @@ class IconViewModel {
 
   List<IconModel> accountIcons = IconService().getAccountIcons();
 
-
  }

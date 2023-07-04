@@ -10,6 +10,7 @@ class OnTapModel extends ChangeNotifier{
   bool hidden = false;
   void toggleHidden () {
     hidden = !hidden;
+    print('ta runfando');
     notifyListeners();
   }
 }

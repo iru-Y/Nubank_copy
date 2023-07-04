@@ -1,19 +1,22 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:nubank_copy/data/shared_on_tap_data.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
 import 'package:nubank_copy/viewmodel/icon_viewmodel.dart';
+import 'package:nubank_copy/viewmodel/on_tap_viewmodel.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../viewmodel/on_tap_viewmodel.dart';
-
-
-class AccountWidget extends StatelessWidget {
+class AccountWidget extends StatefulWidget {
   const AccountWidget({Key? key}) : super(key: key);
 
   @override
+  State<AccountWidget> createState() => _AccountWidgetState();
+}
+
+class _AccountWidgetState extends State<AccountWidget> {
+  @override
   Widget build(BuildContext context) {
     final icons = IconViewModel().accountIcons;
+    final onTapServices = Provider.of<OneTapViewModel>(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,9 +32,9 @@ class AccountWidget extends StatelessWidget {
                   style: TextStyle(fontSize: 20),
                 ),
                 const SizedBox(height: 10),
-                Consumer<SharedOnTapData>(
+                Consumer<OneTapViewModel>(
                   builder: (context, value, _) =>
-                  value. ? const Text('****') : const Text('3.2000,00')
+                  value.headerOnTap[0].hidden ? const Text('****') : const Text('500,00')
                 )
               ]
           ),),

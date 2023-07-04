@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:nubank_copy/data/shared_on_tap_data.dart';
 import 'package:nubank_copy/services/on_tap_service.dart';
 
