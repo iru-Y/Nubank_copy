@@ -4,12 +4,12 @@ import 'package:nubank_copy/utils/custom_syles.dart';
 import 'package:nubank_copy/view/screens/home/home_view.dart';
 import 'package:nubank_copy/view/screens/login/login_view.dart';
 import 'package:nubank_copy/view/screens/user_profile/user_profile_view.dart';
-import 'package:nubank_copy/viewmodel/on_tap_viewmodel.dart';
 import 'package:provider/provider.dart';
 
+import 'viewmodel/on_tap_viewmodel.dart';
+
 void main() {
-    runApp(
-    const MyApp());
+    runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return ChangeNotifierProvider(
-      create: (_)=> OneTapViewMode(),
+      create: (_)=> OneTapViewModel(),
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
