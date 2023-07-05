@@ -7,15 +7,18 @@ class OnTapModel extends ChangeNotifier{
 
   OnTapModel(this.id, this.onTap);
 
-  bool hidden = false;
-  void toggleHidden () {
-    hidden = !hidden;
-    print('ta runfando');
+  bool _hidden = false;
+
+  bool get hidden => _hidden;
+
+  void toggleHidden() {
+    _hidden = !_hidden;
+    print('Está funcionando');
     notifyListeners();
   }
 }
 
-abstract class SharedOnTapData{
+class OnTapService {
 
   static final List<OnTapModel>onTapHeaderFunction = [
     OnTapModel(1, () {

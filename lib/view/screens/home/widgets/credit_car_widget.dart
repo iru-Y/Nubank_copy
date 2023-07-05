@@ -13,7 +13,7 @@ class CreditCarWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset('assets/icon/nubank-my-cards-icon.png',
+            Image.asset('assets/icons/nubank-my-cards-icon.png',
               scale: 2.5,
               color: Colors.black,),
             const SizedBox(height: 15),

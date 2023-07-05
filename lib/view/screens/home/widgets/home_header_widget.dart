@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nubank_copy/data/shared_on_tap_data.dart';
+import 'package:nubank_copy/services/shared_on_tap_data.dart';
 import 'package:nubank_copy/utils/app_route.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
 import 'package:nubank_copy/viewmodel/icon_viewmodel.dart';
@@ -10,7 +10,7 @@ class HomeHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final icon = IconViewModel().headerIcons;
-    final gesture = SharedOnTapData.onTapHeaderFunction;
+    final gesture = OnTapService.onTapHeaderFunction;
 
     return Container(
       padding: const EdgeInsets.only(

@@ -5,18 +5,13 @@ import 'package:nubank_copy/viewmodel/icon_viewmodel.dart';
 import 'package:nubank_copy/viewmodel/on_tap_viewmodel.dart';
 import 'package:provider/provider.dart';
 
-class AccountWidget extends StatefulWidget {
+class AccountWidget extends StatelessWidget {
   const AccountWidget({Key? key}) : super(key: key);
 
   @override
-  State<AccountWidget> createState() => _AccountWidgetState();
-}
-
-class _AccountWidgetState extends State<AccountWidget> {
-  @override
   Widget build(BuildContext context) {
     final icons = IconViewModel().accountIcons;
-    final onTapServices = Provider.of<OneTapViewModel>(context);
+    final onTapServices = Provider.of<OneTapViewModel>(context, listen: false);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
