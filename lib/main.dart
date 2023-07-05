@@ -9,9 +9,7 @@ import 'package:provider/provider.dart';
 
 void main() {
     runApp(
-    ChangeNotifierProvider(create: (context)=> OneTapViewModel(),
-      child: const MyApp()),
-  );
+    const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -20,21 +18,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: CustomStyles.NUBANK,
-          appBarTheme: const AppBarTheme(
-            color: CustomStyles.NUBANK
-          ),
-          fontFamily: 'GraphikMedium',
+    return ChangeNotifierProvider(
+      create: (_)=> OneTapViewMode(),
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: CustomStyles.NUBANK,
+            appBarTheme: const AppBarTheme(
+              color: CustomStyles.NUBANK
+            ),
+            fontFamily: 'GraphikMedium',
 
-        ),
-      routes: {
-          AppRoute.HOME: (context) => const LoginView(),
-          AppRoute.INITIAL_PAGE: (context)=> const HomeView(),
-          AppRoute.USER_PROFILE: (context) => const UserProfileView()
-      },
+          ),
+        routes: {
+            AppRoute.HOME: (context) => const LoginView(),
+            AppRoute.INITIAL_PAGE: (context)=> const HomeView(),
+            AppRoute.USER_PROFILE: (context) => const UserProfileView()
+        },
+      ),
     );
   }
 }
