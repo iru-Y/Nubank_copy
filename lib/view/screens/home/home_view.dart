@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nubank_copy/view/screens/home/widgets/account_widget.dart';
 import 'package:nubank_copy/view/screens/home/widgets/credit_car_widget.dart';
 import 'package:nubank_copy/view/screens/home/widgets/find_out_more_widget.dart';
 import 'package:nubank_copy/view/screens/home/widgets/home_header_widget.dart';
@@ -15,7 +14,6 @@ class HomeView extends StatelessWidget {
         child: Column(
           children: [
             HomeHeaderWidget(),
-            AccountWidget(),
             Divider(height: 55, thickness: 2),
             CreditCarWidget(),
             Divider(height: 55, thickness: 2),

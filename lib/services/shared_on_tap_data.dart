@@ -1,29 +1,16 @@
-
-import 'package:flutter/cupertino.dart';
-
-class OnTapModel extends ChangeNotifier{
+class OnTapModel{
   int id;
   void Function() onTap;
 
   OnTapModel(this.id, this.onTap);
 
-  bool _hidden = false;
-
-  bool get hidden => _hidden;
-
-  void toggleHidden() {
-    _hidden = !_hidden;
-    print('Está funcionando');
-    notifyListeners();
-  }
 }
 
-class OnTapService {
+class OnTapService{
 
   static final List<OnTapModel>onTapHeaderFunction = [
     OnTapModel(1, () {
-      final service = onTapHeaderFunction[0];
-      service.toggleHidden();
+
     }),
     OnTapModel(2, () {
 

@@ -77,6 +77,10 @@ flutter:
     - assets/icons/nubank-internacional-transfer.png
     - assets/icons/nubank-my-cards-icon.png
     - assets/images/nubank-news-image.png
+    - assets/icons/nubank-open-eye-icon.png
+    - assets/icons/nubank-notification-icon.png
+    - assets/icons/nubank_nucoin_icon.png
+    - assets/icons/nubank-favorite-icon.png
     
 
   #   - images/a_dot_ham.jpeg

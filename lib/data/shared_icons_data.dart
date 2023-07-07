@@ -1,7 +1,7 @@
 import 'package:nubank_copy/data/models/icon_model.dart';
 
 abstract class SharedIconsData {
-  static final iconsHeader =[
+  static final ICONS_HEADER =[
     IconModel(
         id: 1,
         title: 'personIcon',
@@ -21,7 +21,7 @@ abstract class SharedIconsData {
         pathIcon: 'assets/icons/nubank-message-plus-icon.png'
     )
   ];
-  static final accountIcons = [
+  static final ACCOUNT_ICONS = [
     IconModel(
         id: 1,
         title: 'Àrea Pix',
@@ -50,6 +50,12 @@ abstract class SharedIconsData {
         id: 7,
         title: 'Transferir\n Internac.',
         pathIcon: 'assets/icons/nubank-internacional-transfer.png')
+  ];
+  static final USER_PROFILE_HEADER = [
+      IconModel(
+          id: 1,
+          title: 'notificationIcon',
+          pathIcon: 'assets/icons/nubank-notification-icon.png')
   ];
 }
 
