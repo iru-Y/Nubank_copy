@@ -81,6 +81,13 @@ flutter:
     - assets/icons/nubank-notification-icon.png
     - assets/icons/nubank_nucoin_icon.png
     - assets/icons/nubank-favorite-icon.png
+    - assets/icons/nubank-street-mode-icon.png
+    - assets/icons/nubank-config-icon.png
+    - assets/icons/nubank-security-icon.png
+    - assets/icons/nubank-open-finance-icon.png
+    - assets/icons/nubank-documents-icon.png
+    - assets/icons/nubank-PJ-icon.png
+    - assets/icons/nubank-back-user-profile.png
     
 
   #   - images/a_dot_ham.jpeg

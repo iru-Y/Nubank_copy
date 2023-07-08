@@ -4,20 +4,20 @@ abstract class SharedIconsData {
   static final ICONS_HEADER =[
     IconModel(
         id: 1,
-        title: 'personIcon',
+        title: 'Person Icon',
         pathIcon: 'assets/icons/nubank-person-icon.png'
     ),
     IconModel(
         id: 2,
-        title: 'hiddenEyeIcon',
+        title: 'Hidden Eye Icon',
         pathIcon: 'assets/icons/nubank-hidden-eye-icon.png'
     ),
     IconModel(
         id: 3,
-        title: 'askIcon',
+        title: 'Ask Icon',
         pathIcon: 'assets/icons/nubank-ask-icon.png'),
     IconModel(id: 4,
-        title: 'messagePlusIcon',
+        title: 'Invite Friends',
         pathIcon: 'assets/icons/nubank-message-plus-icon.png'
     )
   ];
@@ -51,11 +51,42 @@ abstract class SharedIconsData {
         title: 'Transferir\n Internac.',
         pathIcon: 'assets/icons/nubank-internacional-transfer.png')
   ];
-  static final USER_PROFILE_HEADER = [
+  static final USER_PROFILE_HEADER =
       IconModel(
           id: 1,
           title: 'notificationIcon',
-          pathIcon: 'assets/icons/nubank-notification-icon.png')
+          pathIcon: 'assets/icons/nubank-notification-icon.png');
+
+  static final USER_PROFILE_BODY =[
+    IconModel(
+        id: 1,
+        title: 'Seguro de Vida',
+        pathIcon: 'assets/icons/nubank-favorite-icon.png'),
+    IconModel(
+        id: 2,
+        title: 'Modo Rua',
+        pathIcon: 'assets/icons/nubank-street-mode-icon.png'),
+    IconModel(
+        id: 3,
+        title: 'Configurar',
+        pathIcon: 'assets/icons/nubank-config-icon.png'),
+    IconModel(
+        id: 4,
+        title: 'Segurança',
+        pathIcon: 'assets/icons/nubank-security-icon.png'),
+    IconModel(
+        id: 5,
+        title: 'Open Fincance',
+        pathIcon: 'assets/icons/nubank-open-finance-icon.png'),
+    IconModel(
+        id: 6,
+        title: 'Documentos',
+        pathIcon: 'assets/icons/nubank-documents-icon.png'),
+    IconModel(
+        id: 7,
+        title: 'Pedir outra conta PJ',
+        pathIcon: 'assets/icons/nubank-PJ-icon.png')
   ];
 }
+
 

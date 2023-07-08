@@ -1,12 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:nubank_copy/services/shared_on_tap_data.dart';
 import 'package:nubank_copy/utils/app_route.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
+import 'package:nubank_copy/view/screens/invite_friends/invite_friends_view.dart';
 import 'package:nubank_copy/viewmodel/icon_viewmodel.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../viewmodel/on_tap_viewmodel.dart';
 
 class HomeHeaderWidget extends StatefulWidget {
   const HomeHeaderWidget({super.key});
@@ -21,11 +20,7 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final icon = IconViewModel().headerIcons;
-    final gesture = OnTapService.onTapHeaderFunction;
 
-    final icons = IconViewModel().accountIcons;
-    final onTapServices = Provider.of<OneTapViewModel>(context);
 
     return Column(
       children: [
@@ -39,65 +34,92 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
           decoration: const BoxDecoration(
               color: CustomStyles.NUBANK
           ),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: GestureDetector(
-                      onTap: ()=> Navigator.pushNamed(context,
-                          AppRoute.USER_PROFILE
-                      ),
-                      child: CircleAvatar(
-                        radius: 25,
-                        backgroundColor: CustomStyles.NUBANK_LIGTH,
-                        child: Image.asset(icon[0].pathIcon, scale: 2),
-                      ),
+          child: Consumer<IconViewModel>(
+            builder: (context, value, child) =>
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: GestureDetector(
+                            onTap: ()=> Navigator.pushNamed(context,
+                                AppRoute.USER_PROFILE
+                            ),
+                            child: CircleAvatar(
+                              radius: 25,
+                              backgroundColor: CustomStyles.NUBANK_LIGTH,
+                              child: Image.asset(value.headerIcons[0].pathIcon, scale: 2),
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            GestureDetector(
+                                onTap: (){
+                                  setState(() {
+                                    hidden = !hidden;
+                                  });
+                                },
+                                child: hidden ? Image.asset(value.headerIcons[1].pathIcon, scale: 2.5) :
+                                Image.asset('assets/icons/nubank-open-eye-icon.png', scale: 2.5, color: Colors.white,)
+                            ),
+                            const SizedBox(width: 20),
+                            Consumer<IconViewModel>(
+                                builder: (context, value, child) =>
+                                    Wrap(
+                                        spacing: 20,
+                                        runSpacing: 10,
+                                        children:[
+                                          GestureDetector(
+                                              onTap: (){
+
+                                              },
+                                              child: Image.asset(value.headerIcons[2].pathIcon, scale: 2.5)
+
+                                          ),
+                                          GestureDetector(
+                                            onTap: (){
+                                              Navigator.push(
+                                                context,
+                                                PageRouteBuilder(
+                                                  transitionDuration: const Duration(milliseconds: 500),
+                                                  pageBuilder: (_, __, ___) => const InviteFriendsView(),
+                                                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                                                    return SlideTransition(
+                                                      position: Tween<Offset>(
+                                                        begin: const Offset(1.0, 0.0),
+                                                        end: Offset.zero,
+                                                      ).animate(animation),
+                                                      child: child,
+                                                    );
+                                                  },
+                                                ),
+                                              );},
+                                            child: Image.asset(value.headerIcons[3].pathIcon, scale: 2.5),
+
+
+                                          ),
+                                        ])),
+                          ],
+                        )
+                      ],
                     ),
-                  ),
-                 Row(
-                   children: [
-                     GestureDetector(
-                         onTap: (){
-                           setState(() {
-                             hidden = !hidden;
-                           });
-                         },
-                         child: hidden ? Image.asset(icon[1].pathIcon, scale: 2.5) :
-                         Image.asset('assets/icons/nubank-open-eye-icon.png', scale: 2.5, color: Colors.white,)
-                     ),
-                     const SizedBox(width: 20),
-                     Wrap(
-                       spacing: 20,
-                       runSpacing: 10,
-                       children: List<Widget>.generate(icon.length - 2, (index) {
-                         final ic = icon[index + 2];
-                         final onTap = gesture[index].onTap;
-                         return GestureDetector(
-                           onTap: onTap,
-                           child: Image.asset(ic.pathIcon, scale: 2.5),
-                         );
-                       }),
-                     ),
-                   ],
-                 )
-                ],
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              const Align(
-                alignment: Alignment.bottomLeft,
-                child: Text('Olá, Vinicius Gordão',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700
-                    )),
-              ),
-            ],
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    const Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text('Olá, Vinicius Gordão',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700
+                          )),
+                    ),
+                  ],
+                ),
           ),
         ),
 
@@ -108,10 +130,10 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
           children: [
             Padding(
               padding: const EdgeInsets.only(
-              top: 40,
-                left: 20,
-                right: 20,
-                bottom: 20
+                  top: 40,
+                  left: 20,
+                  right: 20,
+                  bottom: 20
               ),
               child:
               Column(
@@ -131,8 +153,8 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                         height: 32,
                         child: Text('R\$ 500.000,00',
                           style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700
                           ),
                         )
                     )
@@ -143,29 +165,33 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
               padding: const EdgeInsets.only(left: 20),
               child: SizedBox(
                 height: 120,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: icons.length,
-                    itemBuilder: (context, index) =>
-                        Column(
-                          children: [
-                            Container(
-                              width: 65,
-                              height: 65,
-                              margin: const EdgeInsets.only(right: 10, bottom: 20),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100),
-                                color: CustomStyles.BACKGROUND_BODY_ICON,
-                              ),
-                              child: IconButton(
-                                  onPressed: onTapServices.headerOnTap[0].onTap,
-                                  icon: Image.asset(icons[index].pathIcon, scale: 2.5, color: Colors.black)),
-                            ),
-                            Expanded(child: Text(icons[index].title))
-                          ],
-                        )),
-              ),
+                child: Consumer<IconViewModel>(
+                  builder: (context, value, child) =>
+                      ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: value.accountIcons.length,
+                          itemBuilder: (context, index) =>
+                              Column(
+                                children: [
+                                  Container(
+                                    width: 65,
+                                    height: 65,
+                                    margin: const EdgeInsets.only(right: 10, bottom: 20),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(100),
+                                      color: CustomStyles.BACKGROUND_BODY_ICON,
+                                    ),
+                                    child: IconButton(
+                                        onPressed: (){
 
+                                        },
+                                        icon: Image.asset(value.accountIcons[index].pathIcon, scale: 2.5, color: Colors.black)),
+                                  ),
+                                  Expanded(child: Text(value.accountIcons[index].title))
+                                ],
+                              )),
+                ),
+              ),
             ),
             GestureDetector(
               onTap: (){
@@ -247,13 +273,10 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                     ),
                   ),
                 )
-
             ),
           ],
-
         )
       ],
-
     );
   }
 }

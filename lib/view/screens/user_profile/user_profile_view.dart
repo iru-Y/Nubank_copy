@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/user_profile_header_widget.dart';
+import 'user_profile_header_widget.dart';
 
 class UserProfileView extends StatelessWidget{
   const UserProfileView({super.key});
@@ -9,10 +9,12 @@ class UserProfileView extends StatelessWidget{
   Widget build(BuildContext context) {
 
     return const Scaffold(
-      body: Column(
-        children: [
-          UserProfileHeaderWidget()
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            UserProfileHeaderWidget()
+          ],
+        ),
       ),
     );
   }

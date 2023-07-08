@@ -8,6 +8,7 @@ class IconViewModel extends ChangeNotifier{
 
   List<IconModel> accountIcons = IconService().getAccountIcons();
 
-  List<IconModel> userProfileIcons = IconService().getUserProfileIcons();
+  IconModel userProfileIcons = IconService().getUserProfileIcons();
 
+  List<IconModel> userProfileBodyIcons = IconService().getUserProfileBodyIcons();
  }
