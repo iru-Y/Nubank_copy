@@ -4,6 +4,7 @@ import 'package:nubank_copy/utils/app_route.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
 import 'package:nubank_copy/view/screens/invite_friends/invite_friends_view.dart';
 import 'package:nubank_copy/viewmodel/icon_viewmodel.dart';
+import 'package:nubank_copy/viewmodel/user_view_model.dart';
 import 'package:provider/provider.dart';
 
 
@@ -74,7 +75,8 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                                         children:[
                                           GestureDetector(
                                               onTap: (){
-
+                                                Navigator.pushNamed(context,
+                                                    AppRoute.FAQ);
                                               },
                                               child: Image.asset(value.headerIcons[2].pathIcon, scale: 2.5)
 
@@ -109,14 +111,17 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                     const SizedBox(
                       height: 40,
                     ),
-                    const Align(
+                    Align(
                       alignment: Alignment.bottomLeft,
-                      child: Text('Olá, Vinicius Gordão',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w700
-                          )),
+                      child: Consumer<UserViewModel>(
+                        builder: (context, value, child) =>
+                        Text('Olá, ${value.userModel.name}',
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700
+                            )),
+                      ),
                     ),
                   ],
                 ),
@@ -148,15 +153,18 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                       color: CustomStyles.BACKGROUND_BODY_ICON,
                       width: 210,
                       height: 32,
-                    ) : const SizedBox(
-                        width: 210,
-                        height: 32,
-                        child: Text('R\$ 500.000,00',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700
-                          ),
-                        )
+                    ) : Consumer<UserViewModel>(
+                      builder: (context, value, child) =>
+                        SizedBox(
+                          width: 210,
+                          height: 32,
+                          child: Text('R\$ ${value.userModel.accountBalance}',
+                            style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700
+                            ),
+                          )
+                      ),
                     )
                   ]
               ),),

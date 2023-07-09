@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
 import 'package:nubank_copy/viewmodel/icon_viewmodel.dart';
+import 'package:nubank_copy/viewmodel/user_view_model.dart';
 import 'package:provider/provider.dart';
 
 class UserProfileHeaderWidget extends StatelessWidget {
@@ -16,7 +17,7 @@ class UserProfileHeaderWidget extends StatelessWidget {
             color: Colors.black,
             border: Border(
                 bottom: BorderSide(
-                    color: CustomStyles.BOTTOM_CONTAINER_COLOR_PROFILE_USER,
+                    color: CustomStyles.CONTAINER_COLOR_PROFILE_USER,
                     width: 2
                 )
             )
@@ -28,9 +29,9 @@ class UserProfileHeaderWidget extends StatelessWidget {
                 leading,
                 const SizedBox(width: 20),
                 Container(
-                  width: 170,
-                  height: 100,
-                  margin: const EdgeInsets.only(right: 70, top: 13),
+                    width: 170,
+                    height: 100,
+                    margin: const EdgeInsets.only(right: 70, top: 13),
                     child: text
                 ),
                 Platform.isIOS ? const Icon(Icons.chevron_right, color: Colors.white,) :
@@ -103,16 +104,19 @@ class UserProfileHeaderWidget extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 30),
-                      RichText(text: const TextSpan(
-                        children: [
-                          TextSpan(text: 'Yuri\n', style: TextStyle(
-                            fontSize: 20
-                          )),
-                          TextSpan(text: '************************\n'
-                              '************************\n'
-                              '************************\n')
-                        ]
-                      ))
+                      Consumer<UserViewModel>(
+                        builder: (context, value, child) =>
+                            RichText(text: TextSpan(
+                                children: [
+                                  TextSpan(text: '${value.userModel.name}\n', style: const TextStyle(
+                                      fontSize: 20
+                                  )),
+                                  const TextSpan(text: '************************\n'
+                                      '************************\n'
+                                      '************************\n')
+                                ]
+                            )),
+                      )
                     ],
                   ),
                   const SizedBox(height: 13,),
@@ -171,53 +175,58 @@ class UserProfileHeaderWidget extends StatelessWidget {
         ),
         Consumer<IconViewModel>(
           builder: (context, value, child) =>
-          Column(
-            children: List.generate(value.userProfileBodyIcons.length,
-                    (index) =>
-                    container(
-                      leading: Image.asset(value.userProfileBodyIcons[index].pathIcon, scale: 1.5,),
-                      text: Text(value.userProfileBodyIcons[index].title, style: const TextStyle(
-                       color: Colors.white,
-                        fontSize: 15
-                      )),
+              Column(
+                  children: List.generate(value.userProfileBodyIcons.length,
+                          (index) =>
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.pop(context);
+                            },
+                            child: container(
+                              leading: Image.asset(value.userProfileBodyIcons[index].pathIcon, scale: 1.5,),
+                              text: Text(value.userProfileBodyIcons[index].title, style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15
+                              )),
 
-                    ))
-          ),
+                            ),
+                          ))
+              ),
         ),
         Container(
-          width: double.infinity,
-          height: 120,
-          decoration: const BoxDecoration(
-            color: Colors.black
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
-            child: GestureDetector(
-              onTap: (){
-
-              },
-              child: Container(
-                width: double.infinity,
-                height: 30,
-                decoration: BoxDecoration(
-                  color: const Color.fromRGBO(34, 34, 34, 1),
-                  borderRadius: BorderRadius.circular(40)
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                   Image.asset('assets/icons/nubank-back-user-profile.png', scale: 1.5),
-                    const SizedBox(width: 10),
-                    const Text('Sair do aplicativo', style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15
-                    ),
-                    )
-                  ],
+            width: double.infinity,
+            height: 120,
+            decoration: const BoxDecoration(
+                color: Colors.black
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 30,
+                  decoration: BoxDecoration(
+                      color: const Color.fromRGBO(34, 34, 34, 1),
+                      borderRadius: BorderRadius.circular(40)
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset('assets/icons/nubank-back-user-profile.png', scale: 1.5),
+                      const SizedBox(width: 10),
+                      const Text('Sair do aplicativo', style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15
+                      ),
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-          )
+            )
         )
       ],
     );
