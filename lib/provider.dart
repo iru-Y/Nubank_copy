@@ -4,5 +4,5 @@ import 'package:provider/provider.dart';
 
 final providers = [
     ChangeNotifierProvider<IconViewModel>(create: (_)=> IconViewModel()),
-    ChangeNotifierProvider<UserViewModel>(create: (_)=> UserViewModel()),
+    // ChangeNotifierProvider<UserViewModel>(create: (_)=> UserViewModel()),
 ];

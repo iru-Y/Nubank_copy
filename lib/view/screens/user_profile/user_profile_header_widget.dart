@@ -106,19 +106,19 @@ class UserProfileHeaderWidget extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 30),
-                      Consumer<UserViewModel>(
-                        builder: (context, value, child) =>
+                      // Consumer<UserViewModel>(
+                      //   builder: (context, value, child) =>
                          SizedBox(
                               width: 210,
                               height: 32,
                               child: Text(
-                                'R\$ ${value.findByID(1)}',
+                                'R\$ ',
                                 style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
-                            )
+
 
                       )
 

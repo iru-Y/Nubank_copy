@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:nubank_copy/domain/models/user_model.dart';
+import 'package:nubank_copy/domain/repositories/user_repository.dart';
 import 'package:nubank_copy/domain/viewmodel/icon_viewmodel.dart';
 import 'package:nubank_copy/domain/viewmodel/user_view_model.dart';
 import 'package:nubank_copy/utils/app_route.dart';
@@ -19,12 +20,28 @@ class HomeHeaderWidget extends StatefulWidget {
 class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
 
   static bool hidden = false;
+  String name = '';
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
+
+  Future<void> getUser() async {
+    UserRepository userRepository = UserRepository();
+    List<UserModel> users = await userRepository.getAllUsers();
+      name = '';
+       setState(() {
+         name = users[0].name;
+
+         print(name);
+       });
+  }
 
 
 
   @override
   Widget build(BuildContext context) {
-
 
     return Column(
       children: [
@@ -116,18 +133,19 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                     ),
                     Align(
                       alignment: Alignment.bottomLeft,
-                      child: Consumer<UserViewModel>(
-                        builder: (context, value, child) => Text(
-                          'Olá, ${userNameFuture}',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        )
-
+                      child:
+                      // child: FutureBuilder<UserViewModel>(
+                      //   builder: (context, snapshot) =>
+                      Text(
+                        'Olá, $name',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
+
 
                   ],
                 ),
@@ -140,41 +158,41 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(
-                  top: 40,
-                  left: 20,
-                  right: 20,
-                  bottom: 20
-              ),
-              child:
-              Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Conta',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    const SizedBox(height: 10),
-                    hidden ? Container(
-                      color: CustomStyles.BACKGROUND_BODY_ICON,
-                      width: 210,
-                      height: 32,
-                    ) : Consumer<UserViewModel>(
-                        builder: (context, value, child) =>
-                            SizedBox(
-                                width: 210,
-                                height: 32,
-                                child: Text('R\$ ${value.findByID(1)}',
-                                  style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w700
-                                  ),
-                                )
-                            )
-                    )
+                padding: const EdgeInsets.only(
+                    top: 40,
+                    left: 20,
+                    right: 20,
+                    bottom: 20
+                ),
+                child:
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Conta',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      const SizedBox(height: 10),
+                      hidden ? Container(
+                        color: CustomStyles.BACKGROUND_BODY_ICON,
+                        width: 210,
+                        height: 32, ):
+                      // ) : Consumer<UserViewModel>(
+                      //     builder: (context, value, child) =>
+                      SizedBox(
+                          width: 210,
+                          height: 32,
+                          child: Text('R\$ }',
+                            style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700
+                            ),
+                          )
+                      )
 
-                  ]
-              ),),
+
+                    ]
+                )),
 
             Padding(
               padding: const EdgeInsets.only(left: 20),
