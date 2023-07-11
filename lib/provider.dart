@@ -1,7 +1,6 @@
-import 'package:nubank_copy/viewmodel/icon_viewmodel.dart';
+import 'package:nubank_copy/domain/viewmodel/icon_viewmodel.dart';
+import 'package:nubank_copy/domain/viewmodel/user_view_model.dart';
 import 'package:provider/provider.dart';
-
-import 'viewmodel/user_view_model.dart';
 
 final providers = [
     ChangeNotifierProvider<IconViewModel>(create: (_)=> IconViewModel()),

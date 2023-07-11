@@ -1,10 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:nubank_copy/domain/models/user_model.dart';
+import 'package:nubank_copy/domain/viewmodel/icon_viewmodel.dart';
+import 'package:nubank_copy/domain/viewmodel/user_view_model.dart';
 import 'package:nubank_copy/utils/app_route.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
 import 'package:nubank_copy/view/screens/invite_friends/invite_friends_view.dart';
-import 'package:nubank_copy/viewmodel/icon_viewmodel.dart';
-import 'package:nubank_copy/viewmodel/user_view_model.dart';
 import 'package:provider/provider.dart';
 
 
@@ -18,6 +19,8 @@ class HomeHeaderWidget extends StatefulWidget {
 class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
 
   static bool hidden = false;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -114,15 +117,18 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                     Align(
                       alignment: Alignment.bottomLeft,
                       child: Consumer<UserViewModel>(
-                        builder: (context, value, child) =>
-                        Text('Olá, ${value.userModel.name}',
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700
-                            )),
+                        builder: (context, value, child) => Text(
+                          'Olá, ${userNameFuture}',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        )
+
                       ),
                     ),
+
                   ],
                 ),
           ),
@@ -154,18 +160,19 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                       width: 210,
                       height: 32,
                     ) : Consumer<UserViewModel>(
-                      builder: (context, value, child) =>
-                        SizedBox(
-                          width: 210,
-                          height: 32,
-                          child: Text('R\$ ${value.userModel.accountBalance}',
-                            style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700
-                            ),
-                          )
-                      ),
+                        builder: (context, value, child) =>
+                            SizedBox(
+                                width: 210,
+                                height: 32,
+                                child: Text('R\$ ${value.findByID(1)}',
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700
+                                  ),
+                                )
+                            )
                     )
+
                   ]
               ),),
 

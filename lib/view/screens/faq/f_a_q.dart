@@ -13,27 +13,27 @@ class _FAQState extends State<FAQ> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-        body: Center(
-          child: Container(
-            decoration: BoxDecoration(color: Colors.red),
-            height: 300.0,
-            width: 300.0,
-            child: AnimatedTextKit(
-              animatedTexts: [
-                RotateAnimatedText('AWESOME'),
-                RotateAnimatedText('OPTIMISTIC'),
-                RotateAnimatedText(
-                  'DIFFERENT',
+    return SafeArea(
+      child: Scaffold(
+          body: AnimatedTextKit(
+            animatedTexts: [
+              RotateAnimatedText('ESSE PROJETO É APENAS PARA FINS DE APRENDIZADO',
                   textStyle: const TextStyle(
-                    decoration: TextDecoration.underline,
-                  ),
+                    fontSize: 20
+                  )),
+              RotateAnimatedText('TODOS OS DIREITOS RESERVADOS A NUBANK', textStyle: const TextStyle(
+                  fontSize: 20
+              )),
+              RotateAnimatedText(
+                'Visite meu Linkedin e Github',
+                textStyle: const TextStyle(
+                  decoration: TextDecoration.underline,
                 ),
-              ],
-              isRepeatingAnimation: true,
-              totalRepeatCount: 10,
-            ),
-          ),
-        ));
+              ),
+            ],
+            isRepeatingAnimation: true,
+            repeatForever: true,
+          )),
+    );
 
   }}

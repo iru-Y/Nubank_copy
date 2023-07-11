@@ -1,6 +1,7 @@
-import 'package:nubank_copy/data/models/icon_model.dart';
 
-abstract class SharedIconsData {
+import 'package:nubank_copy/domain/models/icon_model.dart';
+
+abstract class SharedIcons {
   static final ICONS_HEADER =[
     IconModel(
         id: 1,

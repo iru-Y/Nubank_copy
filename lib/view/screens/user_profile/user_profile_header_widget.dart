@@ -1,10 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:nubank_copy/domain/models/user_model.dart';
+import 'package:nubank_copy/domain/viewmodel/user_view_model.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
-import 'package:nubank_copy/viewmodel/icon_viewmodel.dart';
-import 'package:nubank_copy/viewmodel/user_view_model.dart';
 import 'package:provider/provider.dart';
+
+import '../../../domain/viewmodel/icon_viewmodel.dart';
 
 class UserProfileHeaderWidget extends StatelessWidget {
   const UserProfileHeaderWidget({super.key});
@@ -106,17 +108,21 @@ class UserProfileHeaderWidget extends StatelessWidget {
                       const SizedBox(width: 30),
                       Consumer<UserViewModel>(
                         builder: (context, value, child) =>
-                            RichText(text: TextSpan(
-                                children: [
-                                  TextSpan(text: '${value.userModel.name}\n', style: const TextStyle(
-                                      fontSize: 20
-                                  )),
-                                  const TextSpan(text: '************************\n'
-                                      '************************\n'
-                                      '************************\n')
-                                ]
-                            )),
+                         SizedBox(
+                              width: 210,
+                              height: 32,
+                              child: Text(
+                                'R\$ ${value.findByID(1)}',
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            )
+
                       )
+
+
                     ],
                   ),
                   const SizedBox(height: 13,),

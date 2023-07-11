@@ -14,7 +14,7 @@ class InviteFriendsWidget extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           decoration: const BoxDecoration(
-              color: Colors.black
+              color: Colors.black,
           ),
           child: Column(
             children: [
@@ -81,7 +81,7 @@ class InviteFriendsWidget extends StatelessWidget {
                 )
               )
             ),
-            child: Text('Convidar amigos', style: TextStyle(
+            child: const Text('Convidar amigos', style: TextStyle(
               color: Colors.white,
               fontSize: 15
             ))
