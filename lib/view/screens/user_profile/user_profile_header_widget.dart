@@ -1,10 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:nubank_copy/domain/models/user_model.dart';
-import 'package:nubank_copy/domain/viewmodel/user_view_model.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
-import 'package:provider/provider.dart';
 
 import '../../../domain/viewmodel/icon_viewmodel.dart';
 
@@ -47,7 +44,7 @@ class UserProfileHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final icon = Provider.of<IconViewModel>(context);
+    final icon = IconViewModel();
 
     return Column(
       children: [
@@ -179,21 +176,20 @@ class UserProfileHeaderWidget extends StatelessWidget {
               )
           ),
         ),
-        Consumer<IconViewModel>(
-          builder: (context, value, child) =>
+
               Column(
-                  children: List.generate(value.userProfileBodyIcons.length,
+                  children: List.generate(icon.userProfileBodyIcons.length,
                           (index) =>
                           GestureDetector(
                             onTap: (){
                               Navigator.pop(context);
                             },
                             child: container(
-                              leading: Image.asset(value.userProfileBodyIcons[index].pathIcon, scale: 1.5,),
-                              text: Text(value.userProfileBodyIcons[index].title, style: const TextStyle(
+                              leading: Image.asset(icon.userProfileBodyIcons[index].pathIcon, scale: 1.5,),
+                              text: Text(icon.userProfileBodyIcons[index].title, style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 15
-                              )),
+                              ),
 
                             ),
                           ))

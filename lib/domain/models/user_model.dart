@@ -1,9 +1,9 @@
 class UserModel {
- final int id;
- final String name;
- final String password;
- final String email;
- final String accountBalance;
+ final int? id;
+ final String? name;
+ final String? password;
+ final String? email;
+ final String? accountBalance;
 
   UserModel({
     required this.id,

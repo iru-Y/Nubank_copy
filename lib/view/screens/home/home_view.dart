@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nubank_copy/domain/models/user_model.dart';
-import 'package:nubank_copy/domain/repositories/user_repository.dart';
 import 'package:nubank_copy/view/screens/home/widgets/credit_car_widget.dart';
 import 'package:nubank_copy/view/screens/home/widgets/find_out_more_widget.dart';
 import 'package:nubank_copy/view/screens/home/widgets/home_header_widget.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nubank_copy/provider.dart';
 import 'package:nubank_copy/utils/app_route.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
 import 'package:nubank_copy/view/screens/faq/f_a_q.dart';
@@ -7,7 +6,6 @@ import 'package:nubank_copy/view/screens/home/home_view.dart';
 import 'package:nubank_copy/view/screens/invite_friends/invite_friends_view.dart';
 import 'package:nubank_copy/view/screens/login/login_view.dart';
 import 'package:nubank_copy/view/screens/user_profile/user_profile_view.dart';
-import 'package:provider/provider.dart';
 
 
 void main() {
@@ -20,26 +18,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return MultiProvider(
-      providers: providers,
-      child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              primaryColor: CustomStyles.NUBANK,
-              appBarTheme: const AppBarTheme(
-                color: CustomStyles.NUBANK
-              ),
-              fontFamily: 'GraphikMedium',
-
+    return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: CustomStyles.NUBANK,
+            appBarTheme: const AppBarTheme(
+              color: CustomStyles.NUBANK
             ),
-          routes: {
-              AppRoute.HOME: (context) => const LoginView(),
-              AppRoute.INITIAL_PAGE: (context)=> const HomeView(),
-              AppRoute.USER_PROFILE: (context) => const UserProfileView(),
-              AppRoute.INVITE_FRIENDS: (context) => const InviteFriendsView(),
-              AppRoute.FAQ: (context) => const FAQ()
-          },
-        ),
-    );
+            fontFamily: 'GraphikMedium',
+
+          ),
+        routes: {
+            AppRoute.HOME: (context) => const LoginView(),
+            AppRoute.INITIAL_PAGE: (context)=> const HomeView(),
+            AppRoute.USER_PROFILE: (context) => const UserProfileView(),
+            AppRoute.INVITE_FRIENDS: (context) => const InviteFriendsView(),
+            AppRoute.FAQ: (context) => const FAQ()
+        },
+      );
   }
 }

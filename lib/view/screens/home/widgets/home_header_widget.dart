@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:nubank_copy/domain/models/user_model.dart';
 import 'package:nubank_copy/domain/repositories/user_repository.dart';
 import 'package:nubank_copy/domain/viewmodel/icon_viewmodel.dart';
-import 'package:nubank_copy/domain/viewmodel/user_view_model.dart';
 import 'package:nubank_copy/utils/app_route.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
 import 'package:nubank_copy/view/screens/invite_friends/invite_friends_view.dart';
-import 'package:provider/provider.dart';
-
 
 class HomeHeaderWidget extends StatefulWidget {
   const HomeHeaderWidget({super.key});
@@ -19,31 +16,35 @@ class HomeHeaderWidget extends StatefulWidget {
 
 class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
 
-  static bool hidden = false;
-  String name = '';
+  late final UserModel userModel;
+  final userRepo = UserRepository();
+
+  final IconViewModel icons = IconViewModel();
+
+  bool hidden = false;
+  bool isLoading = false;
+
   @override
   void initState() {
     super.initState();
-    getUser();
+     _getUser();
   }
 
-  Future<void> getUser() async {
-    UserRepository userRepository = UserRepository();
-    List<UserModel> users = await userRepository.getAllUsers();
-      name = '';
-       setState(() {
-         name = users[0].name;
-
-         print(name);
-       });
+  Future<void> _getUser() async {
+    final response = await userRepo.getAllUsers();
+    setState(() {
+      userModel = response;
+    });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
-
-    return Column(
+    if (isLoading) {
+      return const CircularProgressIndicator(
+        color: CustomStyles.NUBANK,
+      );
+    }
+      return Column(
       children: [
         Container(
           padding: const EdgeInsets.only(
@@ -55,9 +56,7 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
           decoration: const BoxDecoration(
               color: CustomStyles.NUBANK
           ),
-          child: Consumer<IconViewModel>(
-            builder: (context, value, child) =>
-                Column(
+          child: Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,10 +70,10 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                             child: CircleAvatar(
                               radius: 25,
                               backgroundColor: CustomStyles.NUBANK_LIGTH,
-                              child: Image.asset(value.headerIcons[0].pathIcon, scale: 2),
+                              child: Image.asset(icons.headerIcons[0].pathIcon, scale: 2),
                             ),
                           ),
-                        ),
+    ),
                         Row(
                           children: [
                             GestureDetector(
@@ -83,12 +82,10 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                                     hidden = !hidden;
                                   });
                                 },
-                                child: hidden ? Image.asset(value.headerIcons[1].pathIcon, scale: 2.5) :
+                                child: hidden ? Image.asset(icons.headerIcons[1].pathIcon, scale: 2.5) :
                                 Image.asset('assets/icons/nubank-open-eye-icon.png', scale: 2.5, color: Colors.white,)
                             ),
                             const SizedBox(width: 20),
-                            Consumer<IconViewModel>(
-                                builder: (context, value, child) =>
                                     Wrap(
                                         spacing: 20,
                                         runSpacing: 10,
@@ -98,7 +95,7 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                                                 Navigator.pushNamed(context,
                                                     AppRoute.FAQ);
                                               },
-                                              child: Image.asset(value.headerIcons[2].pathIcon, scale: 2.5)
+                                              child: Image.asset(icons.headerIcons[2].pathIcon, scale: 2.5)
 
                                           ),
                                           GestureDetector(
@@ -119,11 +116,9 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                                                   },
                                                 ),
                                               );},
-                                            child: Image.asset(value.headerIcons[3].pathIcon, scale: 2.5),
-
-
+                                            child: Image.asset(icons.headerIcons[3].pathIcon, scale: 2.5),
                                           ),
-                                        ])),
+                                        ]),
                           ],
                         )
                       ],
@@ -133,23 +128,19 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                     ),
                     Align(
                       alignment: Alignment.bottomLeft,
-                      child:
-                      // child: FutureBuilder<UserViewModel>(
-                      //   builder: (context, snapshot) =>
-                      Text(
-                        'Olá, $name',
-                        style: TextStyle(
+                      child: Text(
+                        'Olá, ${userModel.name}',
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 15,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                    ),
-
+                    )
 
                   ],
                 ),
-          ),
+
         ),
 
         //Account sector
@@ -177,20 +168,16 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                         color: CustomStyles.BACKGROUND_BODY_ICON,
                         width: 210,
                         height: 32, ):
-                      // ) : Consumer<UserViewModel>(
-                      //     builder: (context, value, child) =>
                       SizedBox(
                           width: 210,
                           height: 32,
-                          child: Text('R\$ }',
+                          child: Text('R\$ ${userModel.accountBalance}',
                             style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w700
                             ),
                           )
                       )
-
-
                     ]
                 )),
 
@@ -198,11 +185,10 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
               padding: const EdgeInsets.only(left: 20),
               child: SizedBox(
                 height: 120,
-                child: Consumer<IconViewModel>(
-                  builder: (context, value, child) =>
+                child:
                       ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: value.accountIcons.length,
+                          itemCount: icons.accountIcons.length,
                           itemBuilder: (context, index) =>
                               Column(
                                 children: [
@@ -218,12 +204,12 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                                         onPressed: (){
 
                                         },
-                                        icon: Image.asset(value.accountIcons[index].pathIcon, scale: 2.5, color: Colors.black)),
+                                        icon: Image.asset(icons.accountIcons[index].pathIcon, scale: 2.5, color: Colors.black)),
                                   ),
-                                  Expanded(child: Text(value.accountIcons[index].title))
+                                  Expanded(child: Text(icons.accountIcons[index].title))
                                 ],
                               )),
-                ),
+
               ),
             ),
             GestureDetector(
@@ -311,5 +297,5 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
         )
       ],
     );
-  }
+    }
 }
