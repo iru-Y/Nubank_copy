@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
 
-class InviteFriendsWidget extends StatelessWidget {
-  const InviteFriendsWidget({super.key});
+class InviteFriendsBody extends StatelessWidget {
+  const InviteFriendsBody({super.key});
 
   @override
   Widget build(BuildContext context) {

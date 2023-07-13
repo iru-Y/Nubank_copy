@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
 
-class CreditCarWidget extends StatelessWidget {
-  const CreditCarWidget({super.key});
+class CreditCar extends StatelessWidget {
+  const CreditCar({super.key});
 
   @override
   Widget build(BuildContext context) {

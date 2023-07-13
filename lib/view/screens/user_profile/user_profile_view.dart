@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'user_profile_header_widget.dart';
+import 'user_profile_header.dart';
 
 class UserProfileView extends StatelessWidget{
   const UserProfileView({super.key});
@@ -12,7 +12,7 @@ class UserProfileView extends StatelessWidget{
       body: SingleChildScrollView(
         child: Column(
           children: [
-            UserProfileHeaderWidget()
+            UserProfileHeader()
           ],
         ),
       ),

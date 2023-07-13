@@ -2,55 +2,24 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
+import 'package:nubank_copy/view/widgets/scrollable_user_profile_widget.dart';
+import 'package:nubank_copy/view/widgets/user_future_builder.dart';
 
-import '../../../domain/viewmodel/icon_viewmodel.dart';
+import '../../../domain/services/icon_service.dart';
 
-class UserProfileHeaderWidget extends StatelessWidget {
-  const UserProfileHeaderWidget({super.key});
-
-  Widget container ({required Image leading, required Text text}) {
-    return Container(
-        width: double.infinity,
-        height: 100,
-        decoration: const BoxDecoration(
-            color: Colors.black,
-            border: Border(
-                bottom: BorderSide(
-                    color: CustomStyles.CONTAINER_COLOR_PROFILE_USER,
-                    width: 2
-                )
-            )
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(30),
-          child: Row(
-              children: [
-                leading,
-                const SizedBox(width: 20),
-                Container(
-                    width: 170,
-                    height: 100,
-                    margin: const EdgeInsets.only(right: 70, top: 13),
-                    child: text
-                ),
-                Platform.isIOS ? const Icon(Icons.chevron_right, color: Colors.white,) :
-                const Icon(Icons.arrow_forward, color: Colors.white,)
-              ]
-          ),
-        )
-    );
-  }
+class UserProfileHeader extends StatelessWidget {
+  const UserProfileHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
 
-    final icon = IconViewModel();
+    final icon = IconService();
 
     return Column(
       children: [
         Container(
           width: double.infinity,
-          height: 416,
+          height: 449,
           decoration: const BoxDecoration(
               color: CustomStyles.BACKGROUND_HEADER_USER_PROFILE
           ),
@@ -90,39 +59,45 @@ class UserProfileHeaderWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      GestureDetector(
-                        onTap: (){
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                          onTap: (){
 
-                        },
-                        child: CircleAvatar(
-                          radius: 25,
-                          backgroundColor: CustomStyles.NUBANK_LIGTH,
-                          child: Image.asset(icon.headerIcons[0].pathIcon, scale: 2),
+                          },
+                          child: CircleAvatar(
+                            radius: 25,
+                            backgroundColor: CustomStyles.NUBANK_LIGTH,
+                            child: Image.asset(icon.headerIcons[0].pathIcon, scale: 2),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 30),
-                      // Consumer<UserViewModel>(
-                      //   builder: (context, value, child) =>
-                         SizedBox(
-                              width: 210,
-                              height: 32,
-                              child: Text(
-                                'R\$ ',
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-
-
-                      )
-
-
-                    ],
-                  ),
-                  const SizedBox(height: 13,),
+                        const SizedBox(width: 30),
+                        UserFutureBuilder(
+                            builder: (userModel)=> SizedBox(
+                                width: 210,
+                                height: 100,
+                                child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text('${userModel.name}',
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 15
+                                            )),
+                                        const SizedBox(height: 10),
+                                        const Text(
+                                              '**********************************\n'
+                                                '**********************************\n'
+                                                '**********************************',
+                                          style: TextStyle(
+                                            color: Colors.white
+                                          ),
+                                        ),
+                                      ],
+                                    ))))]),
+                  const SizedBox(height: 13),
                   Container(
                     padding: const EdgeInsets.all(20),
                     width: double.infinity,
@@ -177,23 +152,23 @@ class UserProfileHeaderWidget extends StatelessWidget {
           ),
         ),
 
-              Column(
-                  children: List.generate(icon.userProfileBodyIcons.length,
-                          (index) =>
-                          GestureDetector(
-                            onTap: (){
-                              Navigator.pop(context);
-                            },
-                            child: container(
-                              leading: Image.asset(icon.userProfileBodyIcons[index].pathIcon, scale: 1.5,),
-                              text: Text(icon.userProfileBodyIcons[index].title, style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15
-                              ),
+        Column(
+          children: List.generate(icon.userProfileBodyIcons.length,
+                  (index) =>
+                  GestureDetector(
+                      onTap: (){
+                        Navigator.pop(context);
+                      },
+                      child: ScrollableUserProfileWidget(
+                        leading: Image.asset(icon.userProfileBodyIcons[index].pathIcon, scale: 1.5,),
+                        text: Text(icon.userProfileBodyIcons[index].title, style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 15
+                        ),
 
-                            ),
-                          ))
-              ),
+                        ),
+                      ))
+          ),
         ),
         Container(
             width: double.infinity,
@@ -233,5 +208,4 @@ class UserProfileHeaderWidget extends StatelessWidget {
       ],
     );
   }
-
 }

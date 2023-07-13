@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
 
-class FindOutMoreWidget extends StatelessWidget {
-  const FindOutMoreWidget({super.key});
+class FindOutMore extends StatelessWidget {
+  const FindOutMore({super.key});
 
 
   @override

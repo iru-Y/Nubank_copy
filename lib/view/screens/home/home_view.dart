@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nubank_copy/view/screens/home/widgets/credit_car_widget.dart';
-import 'package:nubank_copy/view/screens/home/widgets/find_out_more_widget.dart';
-import 'package:nubank_copy/view/screens/home/widgets/home_header_widget.dart';
+import 'package:nubank_copy/view/screens/home/credit_car.dart';
+import 'package:nubank_copy/view/screens/home/find_out_more.dart';
+import 'package:nubank_copy/view/screens/home/home_header.dart';
 
 class HomeView extends StatelessWidget {
    const HomeView({super.key});
@@ -13,11 +13,11 @@ class HomeView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            HomeHeaderWidget(),
+            HomeHeader(),
             Divider(height: 55, thickness: 2),
-            CreditCarWidget(),
+            CreditCar(),
             Divider(height: 55, thickness: 2),
-            FindOutMoreWidget(),
+            FindOutMore(),
           ],
         ),
       ),
