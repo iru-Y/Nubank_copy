@@ -38,12 +38,14 @@ class ScrollableUserProfileWidget extends StatelessWidget {
                 Container(
                     width: 170,
                     height: 100,
-                    margin: const EdgeInsets.only(right: 70, top: 13),
+                    margin: const EdgeInsets.only(right: 50, top: 13),
                     child: text
                 ),
                 Platform.isIOS ? const Icon(
                   Icons.chevron_right, color: Colors.white,) :
-                const Icon(Icons.arrow_forward, color: Colors.white,)
+                const Expanded(
+                    child: Icon(
+                      Icons.arrow_forward, color: Colors.white,))
               ]
           ),
         )

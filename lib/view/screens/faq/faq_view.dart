@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nubank_copy/utils/custom_syles.dart';
+import 'package:nubank_copy/view/screens/faq/faq_header.dart';
 
 import 'faq_body.dart';
 
@@ -15,7 +17,13 @@ class _FAQViewState extends State<FAQView> {
   Widget build(BuildContext context) {
     return const SafeArea(
         child: Scaffold(
-            body: FaqBody()
+          backgroundColor: CustomStyles.CONTAINER_COLOR_PROFILE_USER,
+            body: Column(
+              children: [
+                FaqHeader(),
+                FaqBody()
+              ],
+            )
         ));
   }
 }

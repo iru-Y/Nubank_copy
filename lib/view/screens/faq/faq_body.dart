@@ -6,28 +6,40 @@ class FaqBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        AnimatedTextKit(
-          animatedTexts: [
-            RotateAnimatedText('ESSE PROJETO É APENAS PARA FINS DE APRENDIZADO',
-                textStyle: const TextStyle(
-                    fontSize: 20
-                )),
-            RotateAnimatedText('TODOS OS DIREITOS RESERVADOS A NUBANK', textStyle: const TextStyle(
-                fontSize: 20
-            )),
-            RotateAnimatedText(
-              'Visite meu Linkedin e Github',
-              textStyle: const TextStyle(
-                decoration: TextDecoration.underline,
+
+        TextStyle textStyle = const TextStyle(
+            fontSize: 20,
+            color: Colors.white
+        );
+
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        children: [
+          AnimatedTextKit(
+            animatedTexts: [
+              FadeAnimatedText('ESSE PROJETO É APENAS PARA FINS DE APRENDIZADO',
+                  duration: const Duration(seconds: 10),
+                  textStyle: textStyle),
+              
+              ScaleAnimatedText('TODOS OS DIREITOS RESERVADOS A NUBANK',
+                  duration: const Duration(seconds: 10),
+                  textStyle: textStyle),
+
+              RotateAnimatedText(
+                'VISITE MEU LINKEDIN E GITHUB',
+                  duration: const Duration(seconds: 10),
+                textStyle: textStyle
               ),
-            ),
-          ],
-          isRepeatingAnimation: true,
-          repeatForever: true,
-        ),
-      ],
+            ],
+            isRepeatingAnimation: true,
+            repeatForever: true,
+          ),
+          ElevatedButton(onPressed: (){
+            Navigator.pop(context);
+          }, child: Text('Voltar para a página inicial'))
+        ],
+      ),
     );
   }
 }

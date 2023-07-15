@@ -7,8 +7,8 @@ import 'package:nubank_copy/view/widgets/user_future_builder.dart';
 
 import '../../../domain/services/icon_service.dart';
 
-class UserProfileHeader extends StatelessWidget {
-  const UserProfileHeader({super.key});
+class UserProfile extends StatelessWidget {
+  const UserProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,21 +39,19 @@ class UserProfileHeader extends StatelessWidget {
                             size: 25,
                           )
                       ),
-                      const SizedBox(width: 200),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.45),
 
-                      Row(
-                          children: [
-                            IconButton(onPressed: (){
+                      IconButton(onPressed: (){
 
-                            },
-                              icon: Image.asset(icon.headerIcons[2].pathIcon, color: CustomStyles.PROFILE_USER_HEADER_ICONS, scale: 2.5),
-                            ),
-                            const SizedBox(width: 8),
-                            IconButton(onPressed: (){
+                      },
+                        icon: Image.asset(icon.headerIcons[2].pathIcon, color: CustomStyles.PROFILE_USER_HEADER_ICONS, scale: 2.5),
+                      ),
+                      const SizedBox(width: 8),
+                      IconButton(onPressed: (){
 
-                            },
-                              icon: Image.asset(icon.userProfileIcons.pathIcon, color: CustomStyles.PROFILE_USER_HEADER_ICONS, scale: 2.5,),
-                            )]),
+                      },
+                        icon: Image.asset(icon.userProfileIcons.pathIcon, color: CustomStyles.PROFILE_USER_HEADER_ICONS, scale: 2.5,),
+                      ),
 
                     ],
                   ),
@@ -81,7 +79,7 @@ class UserProfileHeader extends StatelessWidget {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text('${userModel.name}',
+                                        Text(userModel.name!,
                                             style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 15
@@ -114,7 +112,7 @@ class UserProfileHeader extends StatelessWidget {
                           color: Colors.white,
                         ),),
                         Container(
-                            margin: const EdgeInsets.only(left: 160),
+                            margin: const EdgeInsets.only(left: 120),
                             width: 50,
                             height: 25,
                             decoration: BoxDecoration(

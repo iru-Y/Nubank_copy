@@ -12,37 +12,41 @@ class LoginView extends StatelessWidget {
       child: Scaffold(
           backgroundColor: CustomStyles.NUBANK,
         body: Center(
-          child: Column(
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.3,
-              ),
-              Image.asset('assets/images/icons8-nubank-200.png'),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.32,
-              ),
-              ElevatedButton(
-                  onPressed: ()=> Navigator.of(context).pushNamed(
-                    AppRoute.INITIAL_PAGE
-                  ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateColor.resolveWith((states) => Colors.white),
-                    shape: MaterialStatePropertyAll(
-                        RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)
-                    )),
-                  fixedSize: const MaterialStatePropertyAll(
-                     Size(350, 40)
-                  )
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 170,
                 ),
-                  child: const Text(
-                      'Usar a senha do celular',
-                    style: TextStyle(
-                      color: CustomStyles.FONT
+                Expanded(
+                    child: Image.asset('assets/images/icons8-nubank-200.png')),
+                const SizedBox(
+                  height: 100,
+                ),
+                ElevatedButton(
+                    onPressed: ()=> Navigator.of(context).pushNamed(
+                      AppRoute.INITIAL_PAGE
                     ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateColor.resolveWith((states) => Colors.white),
+                      shape: MaterialStatePropertyAll(
+                          RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)
+                      )),
+                    fixedSize: const MaterialStatePropertyAll(
+                       Size(350, 20)
+                    )
                   ),
-              ),
-            ],
+                    child: const Text(
+                        'Usar a senha do celular',
+                      style: TextStyle(
+                        color: CustomStyles.FONT
+                      ),
+                    ),
+                ),
+              ],
+            ),
           ),
         )
         ),

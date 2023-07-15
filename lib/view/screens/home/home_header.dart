@@ -1,7 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:nubank_copy/domain/models/user_model.dart';
-import 'package:nubank_copy/domain/services/user_service.dart';
 import 'package:nubank_copy/domain/services/icon_service.dart';
 import 'package:nubank_copy/utils/app_route.dart';
 import 'package:nubank_copy/utils/custom_syles.dart';
@@ -169,7 +167,7 @@ class _HomeHeaderState extends State<HomeHeader> {
                                 width: 210,
                                 height: 32,) :
                               SizedBox(
-                                  width: 210,
+                                  width: double.infinity,
                                   height: 32,
                                   child: Text('R\$ ${userModel.accountBalance}',
                                     style: const TextStyle(

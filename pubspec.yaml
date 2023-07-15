@@ -91,6 +91,9 @@ flutter:
     - assets/icons/nubank-PJ-icon.png
     - assets/icons/nubank-back-user-profile.png
     - assets/images/invite_friends-image.png
+    - assets/images/social_media/social-media-linkedin.png
+    - assets/images/social_media/social-media-github.png
+    - assets/images/social_media/social-media-zoro.png
     
 
   #   - images/a_dot_ham.jpeg

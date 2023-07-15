@@ -8,4 +8,8 @@ class UserService {
    final body = await userRepo.getAllUsers();
    return body;
   }
+
+  Future<void> postUser (UserModel userModel) async{
+      userRepo.post(userModel);
+  }
 }

@@ -7,7 +7,7 @@ import 'package:nubank_copy/utils/api_path.dart';
 class UserRepository {
 
     Future<UserModel> getAllUsers () async{
-    final response = await http.get(Uri.parse('$apiPath/user/1'));
+    final response = await http.get(Uri.parse('$apiPath/users/1'));
 
     if (response.statusCode == 200) {
       final user = jsonDecode(response.body);
@@ -17,7 +17,7 @@ class UserRepository {
   }
 
   Future<void> post (UserModel userModel) async {
-    final response = await http.post(Uri.parse('$apiPath/user/'));
+    final response = await http.post(Uri.parse('$apiPath/user'));
     jsonEncode(response.body);
       userModel.toJson();
   }
